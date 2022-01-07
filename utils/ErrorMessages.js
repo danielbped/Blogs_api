@@ -11,4 +11,5 @@ module.exports = {
   tokenNotFound: 'Token not found',
   invalidToken: 'Expired or invalid token',
   userNotFound: 'User does not exist',
+  emptyCategorieName: '"name" is required',
 };
