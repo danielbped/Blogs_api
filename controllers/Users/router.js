@@ -5,6 +5,7 @@ const router = express.Router({ mergeParams: true });
 
 userControllers.createUser(router);
 userControllers.getAllUsers(router);
+userControllers.getUserById(router);
 
 module.exports = (root) => {
   root.use('/user', router);

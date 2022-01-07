@@ -10,4 +10,5 @@ module.exports = {
   invalidFields: 'Invalid fields',
   tokenNotFound: 'Token not found',
   invalidToken: 'Expired or invalid token',
+  userNotFound: 'User does not exist',
 };
