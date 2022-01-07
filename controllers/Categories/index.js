@@ -3,5 +3,5 @@ const getAllCategories = require('./getAll');
 
 module.exports = {
   createCategorie,
-  getAllCategories
+  getAllCategories,
 };
