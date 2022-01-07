@@ -8,14 +8,13 @@ const userExists = require('../../middlewares/Users/userExists');
 
 const createUser = async (req, res, next) => {
   try {
-    const user = req.body;
+    const { displayName, email, password, image } = req.body;
+    const user = { displayName, email, password, image };
 
     if (typeof (isUserValid(user)) === 'string') {
       return res.status(statusCode.BAD_REQUEST)
         .json({ message: isUserValid(user) });
     }
-
-    const { email } = user;
 
     if (await userExists(email)) {
       return res.status(statusCode.CONFLICT)

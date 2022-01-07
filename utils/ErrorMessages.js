@@ -12,4 +12,7 @@ module.exports = {
   invalidToken: 'Expired or invalid token',
   userNotFound: 'User does not exist',
   emptyCategorieName: '"name" is required',
+  emptyPostTitle: '"title" is required',
+  emptyPostContent: '"content" is required',
+  emptyPostCategoryId: '"categoryIds" is required',
 };
