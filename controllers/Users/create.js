@@ -4,6 +4,7 @@ const { User } = require('../../models');
 const tokenGenerator = require('../../middlewares/Users/tokenGenerator');
 const isUserValid = require('../../middlewares/Users/isValid');
 const errorMessages = require('../../utils/ErrorMessages');
+const userExists = require('../../middlewares/Users/userExists');
 
 const createUser = async (req, res, next) => {
   try {
@@ -15,11 +16,7 @@ const createUser = async (req, res, next) => {
 
     const { email } = user;
 
-    const userExists = await User.findOne({
-      where: { email },
-    });
-
-    if (userExists) {
+    if (await userExists(email)) {
       return res.status(statusCode.CONFLICT).json({ message: errorMessages.userAlreadyExists });
     }
 
