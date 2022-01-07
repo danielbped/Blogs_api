@@ -11,11 +11,13 @@ const login = async (req, res, next) => {
     const user = { email, password };
 
     if (typeof (isLoginValid(user)) === 'string') {
-      return res.status(statusCode.BAD_REQUEST).json({ message: isLoginValid(user) });
+      return res.status(statusCode.BAD_REQUEST)
+        .json({ message: isLoginValid(user) });
     }
 
     if (!await userExists(email)) {
-      return res.status(statusCode.BAD_REQUEST).json({ message: errorMessages.invalidFields });
+      return res.status(statusCode.BAD_REQUEST)
+        .json({ message: errorMessages.invalidFields });
     }
 
     const token = await tokenGenerator(user);

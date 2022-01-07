@@ -11,13 +11,15 @@ const createUser = async (req, res, next) => {
     const user = req.body;
 
     if (typeof (isUserValid(user)) === 'string') {
-      return res.status(statusCode.BAD_REQUEST).json({ message: isUserValid(user) });
+      return res.status(statusCode.BAD_REQUEST)
+        .json({ message: isUserValid(user) });
     }
 
     const { email } = user;
 
     if (await userExists(email)) {
-      return res.status(statusCode.CONFLICT).json({ message: errorMessages.userAlreadyExists });
+      return res.status(statusCode.CONFLICT)
+        .json({ message: errorMessages.userAlreadyExists });
     }
 
     await User.create(user);
