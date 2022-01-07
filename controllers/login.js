@@ -22,9 +22,9 @@ const login = async (req, res, next) => {
 
     const token = await tokenGenerator(user);
 
-    res.status(statusCode.OK).json(token);
-  } catch (e) {
-    next(e);
+    res.status(statusCode.OK).json({ token });
+  } catch (err) {
+    next(err);
   }
 };
 

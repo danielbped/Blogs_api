@@ -8,4 +8,6 @@ module.exports = {
   invalidPassword: '"password" length must be 6 characters long',
   userAlreadyExists: 'User already registered',
   invalidFields: 'Invalid fields',
+  tokenNotFound: 'Token not found',
+  invalidToken: 'Expired or invalid token',
 };
