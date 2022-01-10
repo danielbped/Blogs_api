@@ -15,4 +15,5 @@ module.exports = {
   emptyPostTitle: '"title" is required',
   emptyPostContent: '"content" is required',
   emptyPostCategoryId: '"categoryIds" is required',
+  categoryNotFound: '"categoryIds" not found',
 };
