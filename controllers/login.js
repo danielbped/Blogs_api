@@ -19,8 +19,8 @@ const login = async (req, res, next) => {
 
 module.exports = (router) => {
   router.post('/login',
-    userNotExists,
     isPasswordValid,
     isEmailValid,
+    userNotExists,
     login);
 };
