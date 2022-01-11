@@ -2,7 +2,7 @@ const statusCode = require('http-status-codes').StatusCodes;
 
 const tokenGenerator = require('../middlewares/Users/tokenGenerator');
 const { isPasswordValid, isEmailValid } = require('../middlewares/Login/isValid');
-const userExists = require('../middlewares/Users/userExists');
+const userNotExists = require('../middlewares/Users/userNotExists');
 
 const login = async (req, res, next) => {
   try {
@@ -19,7 +19,7 @@ const login = async (req, res, next) => {
 
 module.exports = (router) => {
   router.post('/login',
-    userExists,
+    userNotExists,
     isPasswordValid,
     isEmailValid,
     login);

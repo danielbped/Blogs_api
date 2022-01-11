@@ -9,9 +9,9 @@ module.exports = async (req, res, next) => {
     where: { email },
   });
 
-  if (user) {
-    return res.status(statusCode.CONFLICT)
-    .json({ message: errorMessages.userAlreadyExists });
+  if (!user) {
+    return res.status(statusCode.BAD_REQUEST)
+    .json({ message: errorMessages.invalidFields });
   }
 
   next();

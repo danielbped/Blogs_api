@@ -1,34 +1,53 @@
+const statusCode = require('http-status-codes').StatusCodes;
 const errorMessages = require('../../utils/ErrorMessages');
 
-const isNameValid = (name) => {
-  if (
-    !(typeof (name) === 'string' && name.length >= 8)
-  ) return { message: errorMessages.invalidName };
+const isNameValid = (req, res, next) => {
+  const { displayName } = req.body;
+  if (!(typeof (displayName) === 'string' && displayName.length >= 8)) {
+    return res.status(statusCode.BAD_REQUEST)
+      .json({ message: errorMessages.invalidName });
+  }
 
-  return true;
+  next();
 };
 
-const isEmailValid = (email) => {
+const isEmailValid = (req, res, next) => {
+  const { email } = req.body;
+
   const emailRegex = /.+@\w+\.\w+(\.\w{2,3})?/;
   const validEmail = emailRegex.test(email);
 
-  if (!email) return { message: errorMessages.emptyEmail };
-  if (!validEmail) return { message: errorMessages.invalidEmail };
+  if (!email) {
+    return res.status(statusCode.BAD_REQUEST)
+      .json({ message: errorMessages.emptyEmail });
+  }
 
-  return true;
+  if (!validEmail) {
+    return res.status(statusCode.BAD_REQUEST)
+      .json({ message: errorMessages.invalidEmail });
+  }
+
+  next();
 };
 
-const isPasswordValid = (password) => {
-  if (!password) return { message: errorMessages.emptyPassword };
-  if (password.length !== 6) return { message: errorMessages.invalidPassword };
+const isPasswordValid = (req, res, next) => {
+  const { password } = req.body;
 
-  return true;
+  if (!password) {
+    return res.status(statusCode.BAD_REQUEST)
+      .json({ message: errorMessages.emptyPassword });
+  }
+
+  if (password.length !== 6) {
+    return res.status(statusCode.BAD_REQUEST)
+      .json({ message: errorMessages.invalidPassword });
+  }
+
+  next();
 };
 
-module.exports = ({ displayName, email, password }) => {
-  if (isNameValid(displayName).message) return isNameValid(displayName).message;
-  if (isEmailValid(email).message) return isEmailValid(email).message;
-  if (isPasswordValid(password).message) return isPasswordValid(password).message;
-
-  return true;
+module.exports = {
+  isNameValid,
+  isEmailValid,
+  isPasswordValid,
 };
