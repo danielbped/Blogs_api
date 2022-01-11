@@ -17,4 +17,6 @@ module.exports = {
   emptyPostCategoryId: '"categoryIds" is required',
   categoryNotFound: '"categoryIds" not found',
   postNotFound: 'Post does not exist',
+  cannotUpdateCategories: 'Categories cannot be edited',
+  unauthorizedUser: 'Unauthorized user',
 };

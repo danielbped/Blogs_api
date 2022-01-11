@@ -1,28 +1,43 @@
 const statusCode = require('http-status-codes').StatusCodes;
-const { BlogPost } = require('../../models');
 
-const isPostValid = require('../../middlewares/Posts/isValid');
+const { BlogPost } = require('../../models');
+const { Categorie } = require('../../models');
+
+const { 
+  isTitleValid,
+  isContentValid,
+  cannotUpdateCategories,
+ } = require('../../middlewares/Posts/isValid');
+
+const isUserAuthorized = require('../../middlewares/Users/isUserAuthorized');
 
 const updatePost = async (req, res, next) => {
   try {
-    const { title, content } = req.body;
-    const post = { title, content };
     const { id } = req.params;
-
-    if (typeof await isPostValid(req.body) === 'string') {
-      return res.status(statusCode.BAD_REQUEST)
-        .json({ message: await isPostValid(post) });
-    }
+    const { title, content } = req.body;
 
     await BlogPost.update(
       { title, content },
       { where: { id } },
     );
+
+    const updatedPost = await BlogPost.findOne({
+      where: { id },
+      attributes: { exclude: ['id', 'updated', 'published'] },
+      include: { model: Categorie, as: 'categories' },
+    });
+
+    res.status(statusCode.OK).json(updatedPost);
   } catch (err) {
     next(err);
   }
 };
 
 module.exports = (router) => {
-  router.put('/', updatePost);
+  router.put('/:id',
+    isUserAuthorized,
+    isTitleValid,
+    isContentValid,
+    cannotUpdateCategories,
+    updatePost);
 };

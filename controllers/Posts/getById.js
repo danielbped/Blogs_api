@@ -7,8 +7,10 @@ const errorMessages = require('../../utils/ErrorMessages');
 
 const getPostById = async (req, res, next) => {
   try {
+    const { id } = req.params;
+    
     const post = await BlogPost.findOne({
-      where: { id: req.params.id },
+      where: { id },
       include: [
         { model: User, as: 'user' },
         { model: Categorie, as: 'categories' },

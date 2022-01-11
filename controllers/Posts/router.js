@@ -8,6 +8,7 @@ const router = express.Router({ mergeParams: true });
 postControllers.createPost(router);
 postControllers.getAllPosts(router);
 postControllers.getPostById(router);
+postControllers.updatePost(router);
 
 module.exports = (root) => {
   root.use('/post', isTokenValid, router);
