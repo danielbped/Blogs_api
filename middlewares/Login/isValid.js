@@ -42,13 +42,7 @@ const isPasswordCorrect = async (req, res, next) => {
 
   const user = await User.findOne({ where: { email } });
   
-  let matchPassword;
-
-  if (email !== 'lewishamilton@gmail.com' && email !== 'MichaelSchumacher@gmail.com') { // Para passar no teste
-    matchPassword = await bcrypt.compare(password, user.password);
-  } else {
-    matchPassword = password === user.password;
-  }
+  const matchPassword = await bcrypt.compare(password, user.password);
 
   if (!matchPassword) {
     return res.status(statusCode.BAD_REQUEST)
