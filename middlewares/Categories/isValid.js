@@ -1,5 +1,14 @@
-module.exports = (name) => {
-  if (!name) return false;
+const statusCode = require('http-status-codes').StatusCodes;
 
-  return true;
+const errorMessages = require('../../utils/ErrorMessages');
+
+module.exports = (req, res, next) => {
+  const { name } = req.body;
+
+  if (!name) {
+    return res.status(statusCode.BAD_REQUEST)
+      .json({ message: errorMessages.emptyCategorieName });
+  }
+
+  next();
 };
