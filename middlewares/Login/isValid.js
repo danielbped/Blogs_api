@@ -1,22 +1,39 @@
+const statusCode = require('http-status-codes').StatusCodes;
 const errorMessages = require('../../utils/ErrorMessages');
 
-const isEmailValid = (email) => {
-  if (email === '') return { message: errorMessages.emptyEmailLogin };
-  if (!email) return { message: errorMessages.emptyEmail };
+const isEmailValid = (req, res, next) => {
+  const { email } = req.body;
+  
+  if (email === '') {
+    return res.status(statusCode.BAD_REQUEST)
+      .json({ message: errorMessages.emptyEmailLogin });
+  }
+  
+  if (!email) {
+    return res.status(statusCode.BAD_REQUEST)
+      .json({ message: errorMessages.emptyEmail });
+  }
 
-  return true;
+  next();
 };
 
-const isPasswordValid = (password) => {
-  if (password === '') return { message: errorMessages.emptyPasswordLogin };
-  if (!password) return { message: errorMessages.emptyPassword };
+const isPasswordValid = (req, res, next) => {
+  const { password } = req.body;
 
-  return true;
+  if (password === '') {
+    return res.status(statusCode.BAD_REQUEST)
+      .json({ message: errorMessages.emptyPasswordLogin });
+  }
+
+  if (!password) {
+    return res.status(statusCode.BAD_REQUEST)
+      .json({ message: errorMessages.emptyPassword });
+  }
+
+  next();
 };
 
-module.exports = ({ email, password }) => {
-  if (isEmailValid(email).message) return isEmailValid(email).message;
-  if (isPasswordValid(password).message) return isPasswordValid(password).message;
-
-  return true;
+module.exports = {
+  isPasswordValid,
+  isEmailValid,
 };
