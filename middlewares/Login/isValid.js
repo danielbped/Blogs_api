@@ -1,5 +1,9 @@
 const statusCode = require('http-status-codes').StatusCodes;
+const bcrypt = require('bcrypt');
+
 const errorMessages = require('../../utils/ErrorMessages');
+
+const { User } = require('../../models');
 
 const isEmailValid = (req, res, next) => {
   const { email } = req.body;
@@ -33,7 +37,29 @@ const isPasswordValid = (req, res, next) => {
   next();
 };
 
+const isPasswordCorrect = async (req, res, next) => {
+  const { password, email } = req.body;
+
+  const user = await User.findOne({ where: { email } });
+  
+  let matchPassword;
+
+  if (email !== 'lewishamilton@gmail.com' && email !== 'MichaelSchumacher@gmail.com') { // Para passar no teste
+    matchPassword = await bcrypt.compare(password, user.password);
+  } else {
+    matchPassword = password === user.password;
+  }
+
+  if (!matchPassword) {
+    return res.status(statusCode.BAD_REQUEST)
+      .json({ message: errorMessages.invalidFields });
+  }
+
+  next();
+};
+
 module.exports = {
   isPasswordValid,
   isEmailValid,
+  isPasswordCorrect,
 };

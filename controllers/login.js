@@ -1,7 +1,10 @@
 const statusCode = require('http-status-codes').StatusCodes;
 
 const tokenGenerator = require('../middlewares/Users/tokenGenerator');
-const { isPasswordValid, isEmailValid } = require('../middlewares/Login/isValid');
+const {
+  isPasswordValid,
+  isEmailValid,
+  isPasswordCorrect } = require('../middlewares/Login/isValid');
 const userNotExists = require('../middlewares/Users/userNotExists');
 
 const login = async (req, res, next) => {
@@ -22,5 +25,6 @@ module.exports = (router) => {
     isPasswordValid,
     isEmailValid,
     userNotExists,
+    isPasswordCorrect,
     login);
 };
