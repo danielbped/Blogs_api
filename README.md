@@ -1,6 +1,6 @@
 # Projeto [Blogs API](https://github.com/tryber/sd-012-project-blogs-api/pull/9)
   - Módulo 3: Desenvolvimento Back-end
-  - Bloco 29: Arquitetura: SOLID e ORM
+    - Bloco 29: Arquitetura: SOLID e ORM
   
 ### Requisitos
 - [x] Sua aplicação deve ter o endpoint POST `/user`
