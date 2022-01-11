@@ -7,6 +7,7 @@ const router = express.Router({ mergeParams: true });
 
 postControllers.createPost(router);
 postControllers.getAllPosts(router);
+postControllers.findByText(router);
 postControllers.getPostById(router);
 postControllers.updatePost(router);
 postControllers.deletePost(router);
