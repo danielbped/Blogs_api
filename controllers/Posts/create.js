@@ -18,6 +18,8 @@ const createPost = async (req, res, next) => {
 
     const post = { ...req.body, userId, published: new Date(), updated: new Date() };
     
+    console.log(post);
+
     const { id } = await BlogPost.create(post);
     
     res.status(statusCode.CREATED).json({ id, userId, title, content });
