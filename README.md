@@ -78,13 +78,13 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
 
 - Caso alguma informação no corpo da requisição esteja em um formato indesejado, algumas mensagens de erro podem surgir:
   - Status 400 (**BAD REQUEST**):
-    - "displayName" length must be at least 8 characters long (Caso o campo "displayName" tenha menos de 8 caracteres);
-    - "email" is required (Caso o campo "email" esteja vazio);
-    - "email" must be a valid email (Caso o email esteja em um formato não aceitável);
-    - "password" length must be 6 characters long (Caso o campo "password" tenha menos ou mais de 6 caracteres);
-    - "password" is required (Caso o campo password esteja vazio).
+    - **"displayName" length must be at least 8 characters long** (Caso o campo "displayName" tenha menos de 8 caracteres);
+    - **"email" is required** (Caso o campo "email" esteja vazio);
+    - **"email" must be a valid email** (Caso o email esteja em um formato não aceitável);
+    - **"password" length must be 6 characters long** (Caso o campo "password" tenha menos ou mais de 6 caracteres);
+    - **"password" is required** (Caso o campo password esteja vazio).
   - Status 409 (**CONFLICT**):
-    - User already registered (Caso um usuário com o email informado já exista no banco de dados).
+    - **User already registered** (Caso um usuário com o email informado já exista no banco de dados).
 
 ### POST /login
 
@@ -105,12 +105,12 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
 
 - Caso alguma informação no corpo da requisição esteja em um formato indesejado, algumas mensagens de erro podem surgir:
   - Status 400 (**BAD REQUEST**):
-    - "email" is required (Caso o campo "email" não esteja presente);
-    - "email" is not allowed to be empty (Caso o campo "email" esteja vazio);
-    - "password" is required (Caso o campo password esteja vazio);
-    - Invalid fields (Caso o campo "email" ou "password" esteja em um formato indesejável);
-    - User does not exist (Caso o usuário não esteja cadastrado);
-    - Wrong password (Caso a senha não esteja correta).
+    - **"email" is required** (Caso o campo "email" não esteja presente);
+    - **"email" is not allowed to be empty** (Caso o campo "email" esteja vazio);
+    - **"password" is required** (Caso o campo password esteja vazio);
+    - **Invalid fields** (Caso o campo "email" ou "password" esteja em um formato indesejável);
+    - **User does not exist** (Caso o usuário não esteja cadastrado);
+    - **Wrong password** (Caso a senha não esteja correta).
 
 ### GET /user
 
@@ -137,8 +137,8 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
 
 - Caso haja algum problema com o token informado, algumas mensagens de erro podem surgir:
   - Status 401 (**UNAUTHORIZED**):
-    - Expired or invalid token (Caso o token seja inválido ou já tenha expirado);
-    - Token not found (Caso o campo authorization esteja vazio).
+    - **Expired or invalid token** (Caso o token seja inválido ou já tenha expirado);
+    - **Token not found** (Caso o campo authorization esteja vazio).
 
 ### GET /user/id
 
@@ -160,10 +160,10 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
 
 - Caso haja algum problema com a requisição, algumas mensagens de erro podem surgir:
   - Status 401 (**UNAUTHORIZED**):
-    - Expired or invalid token (Caso o token seja inválido ou já tenha expirado);
-    - Token not found (Caso o campo authorization esteja vazio).
+    - **Expired or invalid token** (Caso o token seja inválido ou já tenha expirado);
+    - **Token not found** (Caso o campo authorization esteja vazio).
   - Status 404 (**NOT FOUND**):
-    - User does not exist (Caso não haja um usuário com o id informado).
+    - **User does not exist** (Caso não haja um usuário com o id informado).
 
 ### DELETE user/me
 
@@ -177,8 +177,8 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
 
 - Caso haja algum problema com o token informado, algumas mensagens de erro podem surgir:
   - Status 401 (**UNAUTHORIZED**):
-    - Expired or invalid token (Caso o token seja inválido ou já tenha expirado);
-    - Token not found (Caso o campo authorization esteja vazio).
+    - **Expired or invalid token** (Caso o token seja inválido ou já tenha expirado);
+    - **Token not found** (Caso o campo authorization esteja vazio).
 
 ## Categories
 
@@ -203,10 +203,10 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
 
 - Caso haja algum problema com a requisição, algumas mensagens de erro podem surgir:
     - Status 400 (**BAD REQUEST**):
-      - "name" is required (Caso o campo "name" não esteja presente ou esteja vazio)
+      - **"name" is required** (Caso o campo "name" não esteja presente ou esteja vazio)
     - Status 401 (**UNAUTHORIZED**):
-      - Expired or invalid token (Caso o token seja inválido ou já tenha expirado)
-      - Token not found (Caso o campo authorization esteja vazio)
+      - **Expired or invalid token** (Caso o token seja inválido ou já tenha expirado)
+      - **Token not found** (Caso o campo authorization esteja vazio)
 
 ### GET /categories
 
@@ -231,8 +231,8 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
 
 - Caso haja algum problema com o token informado, algumas mensagens de erro podem surgir:
   - Status 401 (**UNAUTHORIZED**):
-    - Expired or invalid token (Caso o token seja inválido ou já tenha expirado);
-    - Token not found (Caso o campo authorization esteja vazio).
+    - **Expired or invalid token** (Caso o token seja inválido ou já tenha expirado);
+    - **Token not found** (Caso o campo authorization esteja vazio).
 
 ## Posts
 
@@ -255,13 +255,13 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
 
 - Caso haja algum problema com a requisição, algumas mensagens de erro podem surgir:
   - Status 400 (**BAD REQUEST**):
-    - "title" is required (Caso o campo "title" esteja vazio ou não esteja presente);
-    - "content"  is required (Caso o campo "content" esteja vazio ou não esteja presente);
-    - "categoryIds" is required Caso o campo "categoryIds" esteja vazio ou não esteja presente);
-    - "categoryIds" not found (Caso o id da categoria informado não pertença a nenhuma categoria cadastrada).
+    - **"title" is required** (Caso o campo "title" esteja vazio ou não esteja presente);
+    - **"content"  is required** (Caso o campo "content" esteja vazio ou não esteja presente);
+    - **"categoryIds" is required** (Caso o campo "categoryIds" esteja vazio ou não esteja presente);
+    - **"categoryIds" not found** (Caso o id da categoria informado não pertença a nenhuma categoria cadastrada).
   - Status 401 (**UNAUTHORIZED**):
-      - Expired or invalid token (Caso o token seja inválido ou já tenha expirado);
-      - Token not found (Caso o campo authorization esteja vazio).
+      - **Expired or invalid token** (Caso o token seja inválido ou já tenha expirado);
+      - **Token not found** (Caso o campo authorization esteja vazio).
 
 ### GET /post
 
@@ -306,8 +306,8 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
       
 - Caso haja algum problema com o token informado, algumas mensagens de erro podem surgir:
   - Status 401 (**UNAUTHORIZED**):
-    - Expired or invalid token (Caso o token seja inválido ou já tenha expirado);
-    - Token not found (Caso o campo authorization esteja vazio).
+    - **Expired or invalid token** (Caso o token seja inválido ou já tenha expirado);
+    - **Token not found** (Caso o campo authorization esteja vazio).
 
 ### GET /post/id
 
@@ -336,10 +336,10 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
 
 - Caso haja algum problema com a requisição, algumas mensagens de erro podem surgir:
   - Status 404 (**NOT FOUND**):
-    - Post does not exist (Caso o "id" informado não pertença a nenhum post cadastrado).
+    - **Post does not exist** (Caso o "id" informado não pertença a nenhum post cadastrado).
   - Status 401 (**UNAUTHORIZED**):
-    - Expired or invalid token (Caso o token seja inválido ou já tenha expirado);
-    - Token not found (Caso o campo authorization esteja vazio).
+    - **Expired or invalid token** (Caso o token seja inválido ou já tenha expirado);
+    - **Token not found** (Caso o campo authorization esteja vazio).
 
 ### PUT /post/id
 
@@ -364,13 +364,13 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
       
 - Caso haja algum problema com a requisição, algumas mensagens de erro podem surgir:
   - Status 400 (**BAD REQUEST**):
-    - Categories cannot be edited (Caso tente alterar as categorias do post);
-    - "title" is required (Caso o campo "title" esteja vazio);
-    - "content" is required (Caso o campo "content" esteja vazio).
+    - **Categories cannot be edited** (Caso tente alterar as categorias do post);
+    - **"title" is required** (Caso o campo "title" esteja vazio);
+    - **"content" is required** (Caso o campo "content" esteja vazio).
   - Status 401 (**UNAUTHORIZED**):
-    - Unauthorized user (Caso o token informado seja de outro usuário;) 
-    - Expired or invalid token (Caso o token seja inválido ou já tenha expirado);
-    - Token not found (Caso o campo authorization esteja vazio).
+    - **Unauthorized user** (Caso o token informado seja de outro usuário;) 
+    - **Expired or invalid token** (Caso o token seja inválido ou já tenha expirado);
+    - **Token not found** (Caso o campo authorization esteja vazio).
 
 ### DELETE post/id
 
@@ -384,11 +384,11 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
 
 - Caso haja algum problema com a requisição, algumas mensagens de erro podem surgir:
   - Status 404 (**NOT FOUND**):
-    - Post does not exist (Caso o "id" informado não pertença a nenhum post cadastrado).
+    - **Post does not exist** (Caso o "id" informado não pertença a nenhum post cadastrado).
   - Status 401 (**UNAUTHORIZED**):
-    - Unauthorized user (Caso o token informado seja de outro usuário;) 
-    - Expired or invalid token (Caso o token seja inválido ou já tenha expirado);
-    - Token not found (Caso o campo authorization esteja vazio).
+    - **Unauthorized user** (Caso o token informado seja de outro usuário;) 
+    - **Expired or invalid token** (Caso o token seja inválido ou já tenha expirado);
+    - **Token not found** (Caso o campo authorization esteja vazio).
 
 ### GET post/search?q=searchTerm
 
@@ -435,8 +435,8 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
 
 - Caso haja algum problema com o token informado, algumas mensagens de erro podem surgir:
   - Status 401 (**UNAUTHORIZED**):
-    - Expired or invalid token (Caso o token seja inválido ou já tenha expirado);
-    - Token not found (Caso o campo authorization esteja vazio).
+    - **Expired or invalid token** (Caso o token seja inválido ou já tenha expirado);
+    - **Token not found** (Caso o campo authorization esteja vazio).
 
 ## Requisitos
 O projeto foi desenvolvido seguindo requisitos pré-estabelecidos:
