@@ -40,6 +40,8 @@
         MYSQL_PASSWORD=password
         HOSTNAME=localhost
         SECRET=secret
+  
+  `Lembre de trocar 'root' pelo seu nome de usuário no MySQL, e 'password' pela sua senha`
 
   - Pronto, agora o projeto está pronto para ser rodado localmente, utilizando o comando **npm start**:
 
