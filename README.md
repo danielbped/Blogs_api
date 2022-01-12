@@ -130,7 +130,7 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
     - Expired or invalid token (Caso o token seja inválido ou já tenha expirado);
     - Token not found (Caso o campo authorization esteja vazio).
 
-### GET /user/:id
+### GET /user/id
 
 - Para realizar a busca de um usuário cadastrado pelo "id", **será necessário utilizar o token obtido no login ou no cadastro**, e a requisição não terá corpo. O token será utilizado no campo **authorization dos headers da requisição**.
 
@@ -150,6 +150,17 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
     - Token not found (Caso o campo authorization esteja vazio).
   - Status 404 (**NOT FOUND**):
     - User does not exist (Caso não haja um usuário com o id informado).
+
+### DELETE user/me
+
+- Para deletar um usuário cadastrado pelo "id", **será necessário utilizar o token obtido no login ou no cadastro, e que o token seja do mesmo usuário que deseja deletar**, e a requisição não terá corpo. O token será utilizado no campo **authorization dos headers da requisição**.
+
+- A resposta terá um status 204 (**NO CONTENT**), e não terá corpo.
+
+- Caso haja algum problema com o token informado, algumas mensagens de erro podem surgir:
+  - Status 401 (**UNAUTHORIZED**):
+    - Expired or invalid token (Caso o token seja inválido ou já tenha expirado);
+    - Token not found (Caso o campo authorization esteja vazio).
 
 ## Categories
 
@@ -203,9 +214,182 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
 
 - Para criar um novo post, **será necessário utilizar o token obtido no login ou no cadastro**, o token será informado no campo authorization dos headers da requisição,e a requisição deverá ter um corpo no formato **JSON**, e seguir o seguinte modelo:
 
-~ Em construção ...
+- A resposta terá um status 201 (**CREATED**), e será parecida com a seguinte:
 
-### Requisitos
+      {
+        "id": 1,
+        "userId": 1,
+        "title": "Latest updates, August 1st",
+        "content": "The whole text for the blog post goes here in this key"
+      }
+
+- Caso haja algum problema com a requisição, algumas mensagens de erro podem surgir:
+  - Status 400 (**BAD REQUEST**):
+    - "title" is required (Caso o campo "title" esteja vazio ou não esteja presente);
+    - "content"  is required (Caso o campo "content" esteja vazio ou não esteja presente);
+    - "categoryIds" is required Caso o campo "categoryIds" esteja vazio ou não esteja presente);
+    - "categoryIds" not found (Caso o id da categoria informado não pertença a nenhuma categoria cadastrada).
+  - Status 401 (**UNAUTHORIZED**):
+      - Expired or invalid token (Caso o token seja inválido ou já tenha expirado);
+      - Token not found (Caso o campo authorization esteja vazio).
+
+### GET /post
+
+- Para realizar a busca de todos os posts cadastrados, **será necessário utilizar o token obtido no login ou no cadastro**, e a requisição não terá corpo, o token será informado no campo authorization dos headers da requisição.
+
+- A resposta terá um status 200 (**OK**), e será um array parecido com o seguinte:
+
+      [
+        {
+          "id": 1,
+          "title": "Latest updates, August 1st",
+          "content": "The whole text for the blog post goes here in this key",
+          "userId": 1,
+          "updated": "2022-01-12T15:30:12.000Z",
+          "published": "2022-01-12T15:30:12.000Z",
+          "user": {
+            "id": 1,
+            "displayName": "Ayrton senna",
+            "email": "ayrtonsenna@gmail.com",
+            "image": "https://www.ibraco.org.co/wp-content/uploads/2021/10/ayrton.jpg"
+          }
+        },
+        {
+          "id": 2,
+          "title": "Latest updates, August 12st",
+          "content": "The whole text for the blog post goes here in this key",
+          "userId": 1,
+          "updated": "2022-01-12T15:36:29.000Z",
+          "published": "2022-01-12T15:36:29.000Z",
+          "user": {
+            "id": 1,
+            "displayName": "Ayrton senna",
+            "email": "ayrtonsenna@gmail.com",
+            "image": "https://www.ibraco.org.co/wp-content/uploads/2021/10/ayrton.jpg"
+          }
+        }
+      ]
+      
+- Caso haja algum problema com o token informado, algumas mensagens de erro podem surgir:
+  - Status 401 (**UNAUTHORIZED**):
+    - Expired or invalid token (Caso o token seja inválido ou já tenha expirado);
+    - Token not found (Caso o campo authorization esteja vazio).
+
+### GET /post/id
+
+- Para realizar a busca de um post cadastrado por "id", **será necessário utilizar o token obtido no login ou no cadastro**, e a requisição não terá corpo, o token será informado no campo authorization dos headers da requisição.
+
+- A resposta terá um status 200 (**OK**), e será parecida com a seguinte (Ex.: post/1):
+
+      {
+        "id": 1,
+        "title": "Latest updates, August 1st",
+        "content": "The whole text for the blog post goes here in this key",
+        "userId": 1,
+        "updated": "2022-01-12T15:30:12.000Z",
+        "published": "2022-01-12T15:30:12.000Z",
+        "user": {
+          "id": 1,
+          "displayName": "Ayrton senna",
+          "email": "ayrtonsenna@gmail.com",
+          "image": "https://www.ibraco.org.co/wp-content/uploads/2021/10/ayrton.jpg"
+        }
+      }
+
+- Caso haja algum problema com a requisição, algumas mensagens de erro podem surgir:
+  - Status 404 (**NOT FOUND**):
+    - Post does not exist (Caso o "id" informado não pertença a nenhum post cadastrado).
+  - Status 401 (**UNAUTHORIZED**):
+    - Expired or invalid token (Caso o token seja inválido ou já tenha expirado);
+    - Token not found (Caso o campo authorization esteja vazio).
+
+### PUT /post/id
+
+- Para editar um post cadastrado por "id", **será necessário utilizar o token obtido no login ou no cadastro, e o token deve ser do mesmo usuário que criou o post**, o token será informado no campo authorization dos headers da requisição, e o corpo da requisição deve seguir o modelo a seguir (Ex.: post/1):
+
+      {
+        "title": "Edited",
+        "content": "Edited"
+      }
+
+- A resposta terá um status 200 (**OK**), e será parecida com a seguinte:
+
+      {
+        "title": "Edited",
+        "content": "Edited",
+        "userId": 1
+      }
+      
+- Caso haja algum problema com a requisição, algumas mensagens de erro podem surgir:
+  - Status 400 (**BAD REQUEST**):
+    - Categories cannot be edited (Caso tente alterar as categorias do post);
+    - "title" is required (Caso o campo "title" esteja vazio);
+    - "content" is required (Caso o campo "content" esteja vazio).
+  - Status 401 (**UNAUTHORIZED**):
+    - Unauthorized user (Caso o token informado seja de outro usuário;) 
+    - Expired or invalid token (Caso o token seja inválido ou já tenha expirado);
+    - Token not found (Caso o campo authorization esteja vazio).
+
+### DELETE post/id
+
+- Para deletar um post cadastrado por "id", **será necessário utilizar o token obtido no login ou no cadastro, e o token deve ser do mesmo usuário que criou o post**, o token será informado no campo authorization dos headers da requisição, e o corpo da requisição deve seguir o modelo a seguir (Ex.: post/1):
+
+- A resposta terá um status 204 (**NO CONTENT**), e não terá corpo.
+
+- Caso haja algum problema com a requisição, algumas mensagens de erro podem surgir:
+  - Status 404 (**NOT FOUND**):
+    - Post does not exist (Caso o "id" informado não pertença a nenhum post cadastrado).
+  - Status 401 (**UNAUTHORIZED**):
+    - Unauthorized user (Caso o token informado seja de outro usuário;) 
+    - Expired or invalid token (Caso o token seja inválido ou já tenha expirado);
+    - Token not found (Caso o campo authorization esteja vazio).
+
+### GET post/search?q=searchTerm
+
+- Para buscar um post pelo conteúdo em seu campo de "title" ou em seu campo de "content", **será necessário utilizar o token obtido no login ou no cadastro**, e a requisição não terá corpo, o token será informado no campo authorization dos headers da requisição.
+
+- A terá status 200 (**OK**), e a resposta será um array, com os posts que combinam com a busca, parecido com o modelo a seguir (Ex.: /post/search?q=latest):
+
+      [
+        {
+          "id": 1,
+          "title": "Latest updates, August 1st",
+          "content": "The whole text for the blog post goes here in this key",
+          "userId": 1,
+          "updated": "2022-01-12T15:30:12.000Z",
+          "published": "2022-01-12T15:30:12.000Z",
+          "user": {
+            "id": 1,
+            "displayName": "Ayrton senna",
+            "email": "ayrtonsenna@gmail.com",
+            "image": "https://www.ibraco.org.co/wp-content/uploads/2021/10/ayrton.jpg"
+          }
+        },
+        {
+          "id": 2,
+          "title": "Latest updates, August 12st",
+          "content": "The whole text for the blog post goes here in this key",
+          "userId": 1,
+          "updated": "2022-01-12T15:36:29.000Z",
+          "published": "2022-01-12T15:36:29.000Z",
+          "user": {
+            "id": 1,
+            "displayName": "Ayrton senna",
+            "email": "ayrtonsenna@gmail.com",
+            "image": "https://www.ibraco.org.co/wp-content/uploads/2021/10/ayrton.jpg"
+          }
+        }
+      ]
+
+- Caso nenhum post combine com a busca, o array virá vazio.
+
+- Caso haja algum problema com o token informado, algumas mensagens de erro podem surgir:
+  - Status 401 (**UNAUTHORIZED**):
+    - Expired or invalid token (Caso o token seja inválido ou já tenha expirado);
+    - Token not found (Caso o campo authorization esteja vazio).
+
+## Requisitos
+O projeto foi desenvolvido seguindo requisitos pré-estabelecidos:
 - [x] Sua aplicação deve ter o endpoint POST `/user`
 - [x] Sua aplicação deve ter o endpoint POST `/login`
 - [x] Sua aplicação deve ter o endpoint GET `/user`
