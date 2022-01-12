@@ -45,6 +45,7 @@
 
         npm start
 
+  `A aplicação, por definição, estará rodando na porta 3000`
 
 # REST API
 
