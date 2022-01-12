@@ -5,15 +5,15 @@
 - Trata-se de um projeto com o objetivo de simular um Blog, podendo criar usuários, fazer login, criar categorias de posts, criar posts, atualizá-los, deletá-los, buscá-los por id, por texto em seu título ou em seu conteúdo, e muito mais
 
 ### Tecnologias utilizadas
-- Node JS;
-- Express;
-- MySQL;
-- Sequelize, para gerenciar as requisições ao banco de dados;
-- Json Web Token, para proteger as rotas;
-- Bcrypt, para encriptografar as senhas, antes de guardá-las no banco de dados;
-- Https Status Code, para padronizar as respostas de acordo com a requisição;
-- Nodemon, para facilitar a realização dos testes durante o desenvolvimento;
-- Insomnia, para realizar os testes das rotas.
+- **Node JS**;
+- **Express**;
+- **MySQL**;
+- **Sequelize**, para gerenciar as requisições ao banco de dados;
+- **Json Web Token**, para proteger as rotas;
+- **Bcrypt**, para encriptografar as senhas, antes de guardá-las no banco de dados;
+- **Https Status Code**, para padronizar as respostas de acordo com a requisição;
+- **Nodemon**, para facilitar a realização dos testes durante o desenvolvimento;
+- **Insomnia**, para realizar os testes das rotas.
 
 # Instruções para rodar o projeto
 
