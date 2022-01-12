@@ -9,7 +9,10 @@ const findPostByText = async (req, res, next) => {
     const { q: query } = req.query;
 
     const posts = query ? await BlogPost.findAll({
-      where: { [Op.or]: [{ title: query }, { content: query }] },
+      where: { [Op.or]: [
+        { title: { [Op.like]: `%${query}%` } },
+        { content: { [Op.like]: `%${query}%` } }],
+      },
       include: [{ model: User, as: 'user' }, { model: Categorie, as: 'categories' }],
     }) : await BlogPost.findAll({
       include: [{ model: User, as: 'user' }, { model: Categorie, as: 'categories' }],

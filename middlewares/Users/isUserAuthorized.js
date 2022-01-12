@@ -18,6 +18,8 @@ module.exports = async (req, res, next) => {
 
   const { email: editEmail } = await User.findOne({ id: userId });
 
+  console.log(userEmail, editEmail);
+
   if (userEmail !== editEmail) {
     return res.status(statusCode.UNAUTHORIZED)
       .json({ message: errorMessages.unauthorizedUser });
