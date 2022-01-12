@@ -51,6 +51,8 @@
 ## Users
 
 ### POST /user
+
+### Request
   - Para criar um novo usuário, o corpo da requisição deve ser no formato **JSON**, no seguinte modelo:
 
         {
@@ -59,7 +61,8 @@
           "password": "123456",
           "image": "https://www.ibraco.org.co/wp-content/uploads/2021/10/ayrton.jpg"
         }
-        
+
+### Response
    - A resposta será um token, com um status 201 (**CREATED**), parecido com esse:
 
 `
@@ -82,6 +85,7 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
 
 ### POST /login
 
+### Request
 - Para realizar o login, o corpo da requisição deve ser no formato **JSON**, no seguinte modelo:
 
         {
@@ -89,6 +93,7 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
           "password": "123456",
         }
 
+### Response
  - A resposta será um token, com um status 200 (**OK**), parecido com esse:
 
         {
@@ -106,8 +111,10 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
 
 ### GET /user
 
+### Request
 - Para realizar a busca de todos os usuários cadastrados, **será necessário utilizar o token obtido no login ou no cadastro**, e a requisição não terá corpo. O token será utilizado no campo **authorization dos headers da requisição**.
 
+### Response
 - A resposta terá um status 200 (**OK**), e será um array parecido com o seguinte:
 
       [
@@ -132,7 +139,11 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
 
 ### GET /user/id
 
+### Request
+
 - Para realizar a busca de um usuário cadastrado pelo "id", **será necessário utilizar o token obtido no login ou no cadastro**, e a requisição não terá corpo. O token será utilizado no campo **authorization dos headers da requisição**.
+
+### Response
 
 - A resposta terá um status 200 (**OK**), e será parecida com a seguinte (Ex.: user/1):
 
@@ -153,7 +164,11 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
 
 ### DELETE user/me
 
+### Request
+
 - Para deletar um usuário cadastrado pelo "id", **será necessário utilizar o token obtido no login ou no cadastro, e que o token seja do mesmo usuário que deseja deletar**, e a requisição não terá corpo. O token será utilizado no campo **authorization dos headers da requisição**.
+
+### Response
 
 - A resposta terá um status 204 (**NO CONTENT**), e não terá corpo.
 
@@ -166,11 +181,15 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
 
 ### POST /categories
 
+### Request
+
 - Para adicionar uma categoria, **será necessário estar logado, e utilizar o token no campo authorization dos headers da requisição**, e o corpo da requisição terá o formato **JSON**, no seguinte modelo:
 
       {
         "name": "filmes"
       }
+
+### Response
 
 - A resposta terá um status 201 (**CREATED**), e deverá ser parecida com a seguinte:
 
@@ -188,7 +207,11 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
 
 ### GET /categories
 
+### Request
+
 - Para realizar a busca de todas as categorias cadastradas, **será necessário utilizar o token obtido no login ou no cadastro**, e a requisição não terá corpo, o token será informado no campo authorization dos headers da requisição.
+
+### Response
 
 - A resposta terá um status 200 (**OK**), e será um array parecido com o seguinte:
 
@@ -212,7 +235,11 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
 
 ### POST /post
 
+### Request
+
 - Para criar um novo post, **será necessário utilizar o token obtido no login ou no cadastro**, o token será informado no campo authorization dos headers da requisição,e a requisição deverá ter um corpo no formato **JSON**, e seguir o seguinte modelo:
+
+### Response
 
 - A resposta terá um status 201 (**CREATED**), e será parecida com a seguinte:
 
@@ -235,7 +262,11 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
 
 ### GET /post
 
+### Request
+
 - Para realizar a busca de todos os posts cadastrados, **será necessário utilizar o token obtido no login ou no cadastro**, e a requisição não terá corpo, o token será informado no campo authorization dos headers da requisição.
+
+### Response
 
 - A resposta terá um status 200 (**OK**), e será um array parecido com o seguinte:
 
@@ -277,7 +308,11 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
 
 ### GET /post/id
 
+### Request
+
 - Para realizar a busca de um post cadastrado por "id", **será necessário utilizar o token obtido no login ou no cadastro**, e a requisição não terá corpo, o token será informado no campo authorization dos headers da requisição.
+
+### Response
 
 - A resposta terá um status 200 (**OK**), e será parecida com a seguinte (Ex.: post/1):
 
@@ -305,12 +340,16 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
 
 ### PUT /post/id
 
+### Request
+
 - Para editar um post cadastrado por "id", **será necessário utilizar o token obtido no login ou no cadastro, e o token deve ser do mesmo usuário que criou o post**, o token será informado no campo authorization dos headers da requisição, e o corpo da requisição deve seguir o modelo a seguir (Ex.: post/1):
 
       {
         "title": "Edited",
         "content": "Edited"
       }
+
+### Response
 
 - A resposta terá um status 200 (**OK**), e será parecida com a seguinte:
 
@@ -332,7 +371,11 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
 
 ### DELETE post/id
 
+### Request
+
 - Para deletar um post cadastrado por "id", **será necessário utilizar o token obtido no login ou no cadastro, e o token deve ser do mesmo usuário que criou o post**, o token será informado no campo authorization dos headers da requisição, e o corpo da requisição deve seguir o modelo a seguir (Ex.: post/1):
+
+### Response
 
 - A resposta terá um status 204 (**NO CONTENT**), e não terá corpo.
 
@@ -346,7 +389,11 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
 
 ### GET post/search?q=searchTerm
 
+### Request
+
 - Para buscar um post pelo conteúdo em seu campo de "title" ou em seu campo de "content", **será necessário utilizar o token obtido no login ou no cadastro**, e a requisição não terá corpo, o token será informado no campo authorization dos headers da requisição.
+
+### Response
 
 - A terá status 200 (**OK**), e a resposta será um array, com os posts que combinam com a busca, parecido com o modelo a seguir (Ex.: /post/search?q=latest):
 
