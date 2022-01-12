@@ -1,5 +1,7 @@
 const statusCode = require('http-status-codes').StatusCodes;
 
+const { User } = require('../models');
+
 const tokenGenerator = require('../middlewares/Users/tokenGenerator');
 const {
   isPasswordValid,
@@ -9,7 +11,10 @@ const userNotExists = require('../middlewares/Users/userNotExists');
 
 const login = async (req, res, next) => {
   try {
-    const { email, password } = req.body;
+    const { email } = req.body;
+
+    const { password } = await User.findOne({ where: { email } });
+
     const user = { email, password };
 
     const token = await tokenGenerator(user);
