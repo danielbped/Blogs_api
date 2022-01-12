@@ -17,8 +17,6 @@ const createPost = async (req, res, next) => {
     const userId = await findUserId(req.headers.authorization);
 
     const post = { ...req.body, userId, published: new Date(), updated: new Date() };
-    
-    console.log(post);
 
     const { id } = await BlogPost.create(post);
     
