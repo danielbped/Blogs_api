@@ -13,7 +13,7 @@ const createUser = async (req, res, next) => {
   try {
     const { displayName, email, password, image } = req.body;
 
-    const cryptedPassword = await bcrypt.hash(password, SALT_ROUNDS);
+    const cryptedPassword = bcrypt.hashSync(password, SALT_ROUNDS);
 
     const user = { displayName, email, password: cryptedPassword, image };
 
