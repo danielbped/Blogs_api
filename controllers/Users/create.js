@@ -21,7 +21,7 @@ const createUser = async (req, res, next) => {
 
     const token = await tokenGenerator(user);
 
-    res.status(statusCode.CREATED).json(token);
+    res.status(statusCode.CREATED).json({ token });
   } catch (err) {
     next(err);
   }

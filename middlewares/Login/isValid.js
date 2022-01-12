@@ -46,7 +46,7 @@ const isPasswordCorrect = async (req, res, next) => {
 
   if (!matchPassword) {
     return res.status(statusCode.BAD_REQUEST)
-      .json({ message: errorMessages.invalidFields });
+      .json({ message: errorMessages.wrongPassword });
   }
 
   next();

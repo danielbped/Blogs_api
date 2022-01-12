@@ -11,6 +11,7 @@
     "http-status-codes": "^2.2.0",
     "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.1.0",
+    "nodemon": "^2.0.15",
     "sequelize": "^6.3.4",
     "shelljs": "0.8.4"
   },

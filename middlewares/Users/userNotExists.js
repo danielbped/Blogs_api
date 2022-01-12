@@ -11,7 +11,7 @@ module.exports = async (req, res, next) => {
 
   if (!user) {
     return res.status(statusCode.BAD_REQUEST)
-    .json({ message: errorMessages.invalidFields });
+    .json({ message: errorMessages.userNotFound });
   }
 
   next();

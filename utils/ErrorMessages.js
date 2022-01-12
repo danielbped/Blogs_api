@@ -19,4 +19,5 @@ module.exports = {
   postNotFound: 'Post does not exist',
   cannotUpdateCategories: 'Categories cannot be edited',
   unauthorizedUser: 'Unauthorized user',
+  wrongPassword: 'Wrong password',
 };
