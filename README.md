@@ -169,7 +169,7 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
 
 ### Request
 
-- Para deletar um usuário cadastrado pelo "id", **será necessário utilizar o token obtido no login ou no cadastro, e que o token seja do mesmo usuário que deseja deletar**, e a requisição não terá corpo. O token será utilizado no campo **authorization dos headers da requisição**.
+- Para deletar seu próprio cadastro, **será necessário utilizar o token obtido no login ou no cadastro, e que o token seja do mesmo usuário que deseja deletar**, e a requisição não terá corpo. O token será utilizado no campo **authorization dos headers da requisição**.
 
 ### Response
 
