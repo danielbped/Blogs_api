@@ -1,3 +1,5 @@
+![mit-license](https://img.shields.io/badge/LICENSE-MIT-blue) ![node-version](https://img.shields.io/badge/Node%20JS-v16.13.0-green)
+
 # Projeto [Blogs API](https://github.com/betrybe/sd-0x-project-blogs-api)
   - Módulo 3: Desenvolvimento Back-end
     - Bloco 29: Arquitetura: SOLID e ORM
@@ -47,6 +49,7 @@ Este projeto está sob licença do [MIT](https://github.com/danielbped/Blogs_api
 # Instruções para rodar o projeto <a name="instrucoes"></a>
 
 ### Será necessário ter instalado na sua máquina:
+      Git
       Postman ou Insomnia
       MySQL
       Node v16.13.0
