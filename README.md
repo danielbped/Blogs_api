@@ -28,17 +28,17 @@
 
 
 # Tecnologias utilizadas <a name="tecnologias"></a>
-- [**Node JS**](https://nodejs.org/en/);
-- [**Express**](https://expressjs.com/pt-br/);
-- [**MySQL**](https://www.npmjs.com/package/mysql2);
-- [**Sequelize**](https://www.npmjs.com/package/sequelize);
-- [**Json Web Token**](https://www.npmjs.com/package/jsonwebtoken);
-- [**Bcrypt**](https://www.npmjs.com/package/bcrypt);
-- [**Https Status Code**](https://www.npmjs.com/package/http-status-codes);
-- [**dotenv**](https://www.npmjs.com/package/dotenv);
-- [**Body Parser**](https://www.npmjs.com/package/body-parser);
-- [**Nodemon**](https://nodemon.io/);
-- [**Insomnia**](https://insomnia.rest/download).
+- [**Node JS**](https://nodejs.org/en/)
+- [**Express**](https://expressjs.com/pt-br/)
+- [**MySQL**](https://www.npmjs.com/package/mysql2)
+- [**Sequelize**](https://www.npmjs.com/package/sequelize)
+- [**Json Web Token**](https://www.npmjs.com/package/jsonwebtoken)
+- [**Bcrypt**](https://www.npmjs.com/package/bcrypt)
+- [**Https Status Code**](https://www.npmjs.com/package/http-status-codes)
+- [**dotenv**](https://www.npmjs.com/package/dotenv)
+- [**Body Parser**](https://www.npmjs.com/package/body-parser)
+- [**Nodemon**](https://nodemon.io/)
+- [**Insomnia**](https://insomnia.rest/download)
 
 # Instruções para rodar o projeto <a name="instrucoes"></a>
 
