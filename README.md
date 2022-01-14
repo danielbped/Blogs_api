@@ -28,15 +28,15 @@
 
 
 # Tecnologias utilizadas <a name="tecnologias"></a>
-- **Node JS**;
-- **Express**;
-- **MySQL**;
-- **Sequelize**, para gerenciar as requisições ao banco de dados;
-- **Json Web Token**, para proteger as rotas;
-- **Bcrypt**, para encriptografar as senhas, antes de guardá-las no banco de dados;
-- **Https Status Code**, para padronizar as respostas de acordo com a requisição;
-- **Nodemon**, para facilitar a realização dos testes durante o desenvolvimento;
-- **Insomnia**, para realizar os testes das rotas.
+- [**Node JS**;](https://nodejs.org/en/)
+- [**Express**;](https://expressjs.com/pt-br/)
+- [**MySQL**](https://www.npmjs.com/package/mysql2);
+- [**Sequelize**](https://www.npmjs.com/package/sequelize), para gerenciar as requisições ao banco de dados;
+- [**Json Web Token**](https://www.npmjs.com/package/jsonwebtoken), para proteger as rotas;
+- [**Bcrypt**](https://www.npmjs.com/package/bcrypt), para encriptografar as senhas, antes de guardá-las no banco de dados;
+- [**Https Status Code**](https://www.npmjs.com/package/http-status-codes), para padronizar as respostas de acordo com a requisição;
+- [**Nodemon**](https://nodemon.io/), para facilitar a realização dos testes durante o desenvolvimento;
+- [**Insomnia**](https://insomnia.rest/download), para realizar os testes das rotas.
 
 # Instruções para rodar o projeto <a name="instrucoes"></a>
 
@@ -189,7 +189,7 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
   - Status 404 (**NOT FOUND**):
     - **User does not exist** (Caso não haja um usuário com o id informado).
 
-### DELETE user/me <a name="delete-user-me"></a>
+### DELETE /user/me <a name="delete-user-me"></a>
 
 ### Request
 
