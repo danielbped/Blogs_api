@@ -1,4 +1,4 @@
-![mit-license](https://img.shields.io/badge/LICENSE-MIT-blue) ![node-version](https://img.shields.io/badge/Node%20JS-v16.13.0-green)
+![mit-license](https://img.shields.io/badge/LICENSE-MIT-blue) ![node-version](https://img.shields.io/badge/Node-v16.13.0-yellow)
 
 # Projeto [Blogs API](https://github.com/betrybe/sd-0x-project-blogs-api)
   - Módulo 3: Desenvolvimento Back-end
