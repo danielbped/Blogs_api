@@ -1,4 +1,4 @@
-# Projeto [Blogs API](https://github.com/tryber/sd-012-project-blogs-api/pull/9)
+# Projeto [Blogs API](https://github.com/betrybe/sd-0x-project-blogs-api)
   - Módulo 3: Desenvolvimento Back-end
     - Bloco 29: Arquitetura: SOLID e ORM
 
