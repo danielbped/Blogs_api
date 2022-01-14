@@ -5,6 +5,7 @@
 - Trata-se de um projeto com o objetivo de simular um Blog, podendo criar usuários, fazer login, criar categorias de posts, criar posts, atualizá-los, deletá-los, buscá-los por id, por texto em seu título ou em seu conteúdo, e muito mais
 
 # Sumário
+- [Licença](#licenca) 
 - [Tecnologias utilizadas](#tecnologias)
 - [Instruções para rodar o projeto](#instrucoes)
 - [REST API](#rest-api)
@@ -26,6 +27,9 @@
     - [GET /post/search?q=searchTerm](#get-post-term)
 - [Requisitos do projeto](#requisitos)
 
+# Licença <a name="licenca"></a>
+
+Este projeto está sob licença do [MIT](https://github.com/danielbped/Blogs_api/blob/master/LICENSE)
 
 # Tecnologias utilizadas <a name="tecnologias"></a>
 - [**Node JS**](https://nodejs.org/en/)
