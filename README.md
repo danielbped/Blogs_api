@@ -4,7 +4,30 @@
 
 - Trata-se de um projeto com o objetivo de simular um Blog, podendo criar usuários, fazer login, criar categorias de posts, criar posts, atualizá-los, deletá-los, buscá-los por id, por texto em seu título ou em seu conteúdo, e muito mais
 
-### Tecnologias utilizadas
+# Sumário
+- [Tecnologias utilizadas](#tecnologias)
+- [Instruções para rodar o projeto](#instrucoes)
+- [REST API](#rest-api)
+  - [Users](#users)
+    - [POST /user](#post-users)
+    - [POST /login](#post-login)
+    - [GET /user](#get-user)
+    - [GET /user/:id](#get-user-id)
+    - [DELETE user/me](#delete-user-me)
+  - [Categories](#categories)
+    - [POST /categories](#post-categories)
+    - [GET /categories](#get-categories)
+  - [Posts](#posts)
+    - [POST /post](#post-posts)
+    - [POST /get](#get-posts)
+    - [GET /post/:id](#get-post-id)
+    - [PUT /post/:id](#put-post-id)
+    - [DELETE /post/:id](#delete-post-id)
+    - [GET /post/search?q=searchTerm](#get-post-term)
+- [Requisitos do projeto](#requisitos)
+
+
+# Tecnologias utilizadas <a name="tecnologias"></a>
 - **Node JS**;
 - **Express**;
 - **MySQL**;
@@ -15,7 +38,7 @@
 - **Nodemon**, para facilitar a realização dos testes durante o desenvolvimento;
 - **Insomnia**, para realizar os testes das rotas.
 
-# Instruções para rodar o projeto
+# Instruções para rodar o projeto <a name="instrucoes"></a>
 
 ### Será necessário ter instalado na sua máquina:
       Postman ou Insomnia
@@ -34,6 +57,7 @@
 
         npm install
 
+  ## .env
   - Na raiz do projeto, será necessário criar um arquivo **.env**, com as seguintes informações:
 
         MYSQL_USER=root
@@ -49,11 +73,11 @@
 
   `A aplicação, por definição, estará rodando na porta 3000`
 
-# REST API
+# REST API <a name="rest-api"></a>
 
-## Users
+## Users <a name="users"></a>
 
-### POST /user
+### POST /user <a name="post-users"></a>
 
 ### Request
   - Para criar um novo usuário, o corpo da requisição deve ser no formato **JSON**, no seguinte modelo:
@@ -86,7 +110,7 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
   - Status 409 (**CONFLICT**):
     - **User already registered** (Caso um usuário com o email informado já exista no banco de dados).
 
-### POST /login
+### POST /login <a name="post-login"></a>
 
 ### Request
 - Para realizar o login, o corpo da requisição deve ser no formato **JSON**, no seguinte modelo:
@@ -112,7 +136,7 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
     - **User does not exist** (Caso o usuário não esteja cadastrado);
     - **Wrong password** (Caso a senha não esteja correta).
 
-### GET /user
+### GET /user <a name="get-user"></a>
 
 ### Request
 - Para realizar a busca de todos os usuários cadastrados, **será necessário utilizar o token obtido no login ou no cadastro**, e a requisição não terá corpo. O token será utilizado no header **"authorization"** da requisição.
@@ -140,7 +164,7 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
     - **Expired or invalid token** (Caso o token seja inválido ou já tenha expirado);
     - **Token not found** (Caso o header "authorization" esteja vazio).
 
-### GET /user/:id
+### GET /user/:id <a name="get-user-id"></a>
 
 ### Request
 
@@ -165,7 +189,7 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
   - Status 404 (**NOT FOUND**):
     - **User does not exist** (Caso não haja um usuário com o id informado).
 
-### DELETE user/me
+### DELETE user/me <a name="delete-user-me"></a>
 
 ### Request
 
@@ -180,9 +204,9 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
     - **Expired or invalid token** (Caso o token seja inválido ou já tenha expirado);
     - **Token not found** (Caso o header "authorization" esteja vazio).
 
-## Categories
+## Categories <a name="categories"></a>
 
-### POST /categories
+### POST /categories <a name="post-categories"></a>
 
 ### Request
 
@@ -208,7 +232,7 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
       - **Expired or invalid token** (Caso o token seja inválido ou já tenha expirado)
       - **Token not found** (Caso o header "authorization" esteja vazio)
 
-### GET /categories
+### GET /categories <a name="get-categories"></a>
 
 ### Request
 
@@ -234,9 +258,9 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
     - **Expired or invalid token** (Caso o token seja inválido ou já tenha expirado);
     - **Token not found** (Caso o header "authorization" esteja vazio).
 
-## Posts
+## Posts <a name="posts"></a>
 
-### POST /post
+### POST /post <a name="post-posts"></a>
 
 ### Request
 
@@ -263,7 +287,7 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
       - **Expired or invalid token** (Caso o token seja inválido ou já tenha expirado);
       - **Token not found** (Caso o header "authorization" esteja vazio).
 
-### GET /post
+### GET /post <a name="get-posts"></a>
 
 ### Request
 
@@ -309,7 +333,7 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
     - **Expired or invalid token** (Caso o token seja inválido ou já tenha expirado);
     - **Token not found** (Caso o header "authorization" esteja vazio).
 
-### GET /post/:id
+### GET /post/:id <a name="get-post-id"></a>
 
 ### Request
 
@@ -341,7 +365,7 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
     - **Expired or invalid token** (Caso o token seja inválido ou já tenha expirado);
     - **Token not found** (Caso o header "authorization" esteja vazio).
 
-### PUT /post/:id
+### PUT /post/:id <a name="put-post-id"></a>
 
 ### Request
 
@@ -372,7 +396,7 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
     - **Expired or invalid token** (Caso o token seja inválido ou já tenha expirado);
     - **Token not found** (Caso o header "authorization" esteja vazio).
 
-### DELETE /post/:id
+### DELETE /post/:id <a name="delete-post-id"></a>
 
 ### Request
 
@@ -390,7 +414,7 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
     - **Expired or invalid token** (Caso o token seja inválido ou já tenha expirado);
     - **Token not found** (Caso o header "authorization" esteja vazio).
 
-### GET /post/search?q=searchTerm
+### GET /post/search?q=searchTerm <a name="get-post-term"></a>
 
 ### Request
 
@@ -438,7 +462,7 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
     - **Expired or invalid token** (Caso o token seja inválido ou já tenha expirado);
     - **Token not found** (Caso o header "authorization" esteja vazio).
 
-## Requisitos
+## Requisitos <a name="requisitos"></a>
 O projeto foi desenvolvido seguindo requisitos pré-estabelecidos:
 - [x] Sua aplicação deve ter o endpoint POST `/user`
 - [x] Sua aplicação deve ter o endpoint POST `/login`
