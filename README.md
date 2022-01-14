@@ -28,15 +28,17 @@
 
 
 # Tecnologias utilizadas <a name="tecnologias"></a>
-- [**Node JS**;](https://nodejs.org/en/)
-- [**Express**;](https://expressjs.com/pt-br/)
+- [**Node JS**](https://nodejs.org/en/);
+- [**Express**](https://expressjs.com/pt-br/);
 - [**MySQL**](https://www.npmjs.com/package/mysql2);
-- [**Sequelize**](https://www.npmjs.com/package/sequelize), para gerenciar as requisições ao banco de dados;
-- [**Json Web Token**](https://www.npmjs.com/package/jsonwebtoken), para proteger as rotas;
-- [**Bcrypt**](https://www.npmjs.com/package/bcrypt), para encriptografar as senhas, antes de guardá-las no banco de dados;
-- [**Https Status Code**](https://www.npmjs.com/package/http-status-codes), para padronizar as respostas de acordo com a requisição;
-- [**Nodemon**](https://nodemon.io/), para facilitar a realização dos testes durante o desenvolvimento;
-- [**Insomnia**](https://insomnia.rest/download), para realizar os testes das rotas.
+- [**Sequelize**](https://www.npmjs.com/package/sequelize);
+- [**Json Web Token**](https://www.npmjs.com/package/jsonwebtoken);
+- [**Bcrypt**](https://www.npmjs.com/package/bcrypt);
+- [**Https Status Code**](https://www.npmjs.com/package/http-status-codes);
+- [**dotenv**](https://www.npmjs.com/package/dotenv);
+- [**Body Parser**](https://www.npmjs.com/package/body-parser);
+- [**Nodemon**](https://nodemon.io/);
+- [**Insomnia**](https://insomnia.rest/download).
 
 # Instruções para rodar o projeto <a name="instrucoes"></a>
 
@@ -65,13 +67,13 @@
         HOSTNAME=localhost
         SECRET=secret
   
-  `Lembre de trocar 'root' pelo seu nome de usuário no MySQL, e 'password' pela sua senha`
+  > ⚠️ Lembre de trocar 'root' pelo seu nome de usuário no MySQL, e 'password' pela sua senha ⚠️
 
   - Pronto, agora o projeto está pronto para ser rodado localmente, utilizando o comando **npm start**:
 
         npm start
 
-  `A aplicação, por definição, estará rodando na porta 3000`
+  > ⚠️ A aplicação, por definição, estará rodando na porta 3000 ⚠️
 
 # REST API <a name="rest-api"></a>
 
@@ -92,9 +94,8 @@
 ### Response
    - A resposta será um token, com um status 201 (**CREATED**), parecido com esse:
 
-`
-ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisições! Ele tem a validade de UMA HORA.
-`            
+> ⚠️ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisições! Ele tem a validade de UMA HORA. ⚠️
+           
      
     {
       "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiYXlydG9uc3Nlbm5hc2RAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkOEZCN1g5SGFJZ1BxT3RYcXZDaVRVZUtxOG5LU3pLMVEzb3VuZHhmTVMxUERGUUdXcDlCb1MifSwiaWF0IjoxNjQxOTk2MzE2LCJleHAiOjE2NDE5OTk5MTZ9.T8DzqrCgVclWXtDds5u2rlH80q3maQN5NH6pwy3iIV4"
