@@ -80,9 +80,9 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
   - Status 400 (**BAD REQUEST**):
     - **"displayName" length must be at least 8 characters long** (Caso o campo "displayName" tenha menos de 8 caracteres);
     - **"email" is required** (Caso o campo "email" esteja vazio);
-    - **"email" must be a valid email** (Caso o email esteja em um formato não aceitável);
+    - **"email" must be a valid email** (Caso o campo "email" esteja em um formato não aceitável);
     - **"password" length must be 6 characters long** (Caso o campo "password" tenha menos ou mais de 6 caracteres);
-    - **"password" is required** (Caso o campo password esteja vazio).
+    - **"password" is required** (Caso o campo "password" esteja vazio).
   - Status 409 (**CONFLICT**):
     - **User already registered** (Caso um usuário com o email informado já exista no banco de dados).
 
@@ -107,7 +107,7 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
   - Status 400 (**BAD REQUEST**):
     - **"email" is required** (Caso o campo "email" não esteja presente);
     - **"email" is not allowed to be empty** (Caso o campo "email" esteja vazio);
-    - **"password" is required** (Caso o campo password esteja vazio);
+    - **"password" is required** (Caso o campo "password" esteja vazio);
     - **Invalid fields** (Caso o campo "email" ou "password" esteja em um formato indesejável);
     - **User does not exist** (Caso o usuário não esteja cadastrado);
     - **Wrong password** (Caso a senha não esteja correta).
@@ -115,7 +115,7 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
 ### GET /user
 
 ### Request
-- Para realizar a busca de todos os usuários cadastrados, **será necessário utilizar o token obtido no login ou no cadastro**, e a requisição não terá corpo. O token será utilizado no campo **authorization dos headers da requisição**.
+- Para realizar a busca de todos os usuários cadastrados, **será necessário utilizar o token obtido no login ou no cadastro**, e a requisição não terá corpo. O token será utilizado no header **"authorization"** da requisição.
 
 ### Response
 - A resposta terá um status 200 (**OK**), e será um array parecido com o seguinte:
@@ -138,13 +138,13 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
 - Caso haja algum problema com o token informado, algumas mensagens de erro podem surgir:
   - Status 401 (**UNAUTHORIZED**):
     - **Expired or invalid token** (Caso o token seja inválido ou já tenha expirado);
-    - **Token not found** (Caso o campo authorization esteja vazio).
+    - **Token not found** (Caso o header "authorization" esteja vazio).
 
-### GET /user/id
+### GET /user/:id
 
 ### Request
 
-- Para realizar a busca de um usuário cadastrado pelo "id", **será necessário utilizar o token obtido no login ou no cadastro**, e a requisição não terá corpo. O token será utilizado no campo **authorization dos headers da requisição**.
+- Para realizar a busca de um usuário cadastrado pelo "id", **será necessário utilizar o token obtido no login ou no cadastro**, e a requisição não terá corpo. O token será utilizado no header **"authorization"** da requisição.
 
 ### Response
 
@@ -161,7 +161,7 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
 - Caso haja algum problema com a requisição, algumas mensagens de erro podem surgir:
   - Status 401 (**UNAUTHORIZED**):
     - **Expired or invalid token** (Caso o token seja inválido ou já tenha expirado);
-    - **Token not found** (Caso o campo authorization esteja vazio).
+    - **Token not found** (Caso o header "authorization" esteja vazio).
   - Status 404 (**NOT FOUND**):
     - **User does not exist** (Caso não haja um usuário com o id informado).
 
@@ -169,7 +169,7 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
 
 ### Request
 
-- Para deletar seu próprio cadastro, **será necessário utilizar o token obtido no login ou no cadastro, e que o token seja do mesmo usuário que deseja deletar**, e a requisição não terá corpo. O token será utilizado no campo **authorization dos headers da requisição**.
+- Para deletar seu próprio cadastro, **será necessário utilizar o token obtido no login ou no cadastro, e que o token seja do mesmo usuário que deseja deletar**, e a requisição não terá corpo. O token será utilizado no header **"authorization"** da requisição.
 
 ### Response
 
@@ -178,7 +178,7 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
 - Caso haja algum problema com o token informado, algumas mensagens de erro podem surgir:
   - Status 401 (**UNAUTHORIZED**):
     - **Expired or invalid token** (Caso o token seja inválido ou já tenha expirado);
-    - **Token not found** (Caso o campo authorization esteja vazio).
+    - **Token not found** (Caso o header "authorization" esteja vazio).
 
 ## Categories
 
@@ -186,7 +186,7 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
 
 ### Request
 
-- Para adicionar uma categoria, **será necessário estar logado, e utilizar o token no campo authorization dos headers da requisição**, e o corpo da requisição terá o formato **JSON**, no seguinte modelo:
+- Para adicionar uma categoria, será necessário estar logado, e utilizar o token no header **"authorization"** da requisição, e o corpo da requisição terá o formato **JSON**, no seguinte modelo:
 
       {
         "name": "filmes"
@@ -206,13 +206,13 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
       - **"name" is required** (Caso o campo "name" não esteja presente ou esteja vazio)
     - Status 401 (**UNAUTHORIZED**):
       - **Expired or invalid token** (Caso o token seja inválido ou já tenha expirado)
-      - **Token not found** (Caso o campo authorization esteja vazio)
+      - **Token not found** (Caso o header "authorization" esteja vazio)
 
 ### GET /categories
 
 ### Request
 
-- Para realizar a busca de todas as categorias cadastradas, **será necessário utilizar o token obtido no login ou no cadastro**, e a requisição não terá corpo, o token será informado no campo authorization dos headers da requisição.
+- Para realizar a busca de todas as categorias cadastradas, **será necessário utilizar o token obtido no login ou no cadastro**, e a requisição não terá corpo, o token será informado no header **"authorization"** da requisição.
 
 ### Response
 
@@ -232,7 +232,7 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
 - Caso haja algum problema com o token informado, algumas mensagens de erro podem surgir:
   - Status 401 (**UNAUTHORIZED**):
     - **Expired or invalid token** (Caso o token seja inválido ou já tenha expirado);
-    - **Token not found** (Caso o campo authorization esteja vazio).
+    - **Token not found** (Caso o header "authorization" esteja vazio).
 
 ## Posts
 
@@ -240,7 +240,7 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
 
 ### Request
 
-- Para criar um novo post, **será necessário utilizar o token obtido no login ou no cadastro**, o token será informado no campo authorization dos headers da requisição,e a requisição deverá ter um corpo no formato **JSON**, e seguir o seguinte modelo:
+- Para criar um novo post, **será necessário utilizar o token obtido no login ou no cadastro**, o token será informado no header **"authorization"** da requisição,e a requisição deverá ter um corpo no formato **JSON**, e seguir o seguinte modelo:
 
 ### Response
 
@@ -261,13 +261,13 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
     - **"categoryIds" not found** (Caso o id da categoria informado não pertença a nenhuma categoria cadastrada).
   - Status 401 (**UNAUTHORIZED**):
       - **Expired or invalid token** (Caso o token seja inválido ou já tenha expirado);
-      - **Token not found** (Caso o campo authorization esteja vazio).
+      - **Token not found** (Caso o header "authorization" esteja vazio).
 
 ### GET /post
 
 ### Request
 
-- Para realizar a busca de todos os posts cadastrados, **será necessário utilizar o token obtido no login ou no cadastro**, e a requisição não terá corpo, o token será informado no campo authorization dos headers da requisição.
+- Para realizar a busca de todos os posts cadastrados, **será necessário utilizar o token obtido no login ou no cadastro**, e a requisição não terá corpo, o token será informado no header **"authorization"** da requisição.
 
 ### Response
 
@@ -307,13 +307,13 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
 - Caso haja algum problema com o token informado, algumas mensagens de erro podem surgir:
   - Status 401 (**UNAUTHORIZED**):
     - **Expired or invalid token** (Caso o token seja inválido ou já tenha expirado);
-    - **Token not found** (Caso o campo authorization esteja vazio).
+    - **Token not found** (Caso o header "authorization" esteja vazio).
 
-### GET /post/id
+### GET /post/:id
 
 ### Request
 
-- Para realizar a busca de um post cadastrado por "id", **será necessário utilizar o token obtido no login ou no cadastro**, e a requisição não terá corpo, o token será informado no campo authorization dos headers da requisição.
+- Para realizar a busca de um post cadastrado por "id", **será necessário utilizar o token obtido no login ou no cadastro**, e a requisição não terá corpo, o token será informado no header **"authorization"** da requisição.
 
 ### Response
 
@@ -339,13 +339,13 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
     - **Post does not exist** (Caso o "id" informado não pertença a nenhum post cadastrado).
   - Status 401 (**UNAUTHORIZED**):
     - **Expired or invalid token** (Caso o token seja inválido ou já tenha expirado);
-    - **Token not found** (Caso o campo authorization esteja vazio).
+    - **Token not found** (Caso o header "authorization" esteja vazio).
 
-### PUT /post/id
+### PUT /post/:id
 
 ### Request
 
-- Para editar um post cadastrado por "id", **será necessário utilizar o token obtido no login ou no cadastro, e o token deve ser do mesmo usuário que criou o post**, o token será informado no campo authorization dos headers da requisição, e o corpo da requisição deve seguir o modelo a seguir (Ex.: post/1):
+- Para editar um post cadastrado por "id", **será necessário utilizar o token obtido no login ou no cadastro, e o token deve ser do mesmo usuário que criou o post**, o token será informado no header **"authorization"** da requisição, e o corpo da requisição deve seguir o modelo a seguir (Ex.: post/1):
 
       {
         "title": "Edited",
@@ -370,13 +370,13 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
   - Status 401 (**UNAUTHORIZED**):
     - **Unauthorized user** (Caso o token informado seja de outro usuário;) 
     - **Expired or invalid token** (Caso o token seja inválido ou já tenha expirado);
-    - **Token not found** (Caso o campo authorization esteja vazio).
+    - **Token not found** (Caso o header "authorization" esteja vazio).
 
-### DELETE post/id
+### DELETE /post/:id
 
 ### Request
 
-- Para deletar um post cadastrado por "id", **será necessário utilizar o token obtido no login ou no cadastro, e o token deve ser do mesmo usuário que criou o post**, o token será informado no campo authorization dos headers da requisição, e o corpo da requisição deve seguir o modelo a seguir (Ex.: post/1):
+- Para deletar um post cadastrado por "id", **será necessário utilizar o token obtido no login ou no cadastro, e o token deve ser do mesmo usuário que criou o post**, o token será informado no header **"authorization"** da requisição, e o corpo da requisição deve seguir o modelo a seguir (Ex.: post/1):
 
 ### Response
 
@@ -388,13 +388,13 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
   - Status 401 (**UNAUTHORIZED**):
     - **Unauthorized user** (Caso o token informado seja de outro usuário;) 
     - **Expired or invalid token** (Caso o token seja inválido ou já tenha expirado);
-    - **Token not found** (Caso o campo authorization esteja vazio).
+    - **Token not found** (Caso o header "authorization" esteja vazio).
 
-### GET post/search?q=searchTerm
+### GET /post/search?q=searchTerm
 
 ### Request
 
-- Para buscar um post pelo conteúdo em seu campo de "title" ou em seu campo de "content", **será necessário utilizar o token obtido no login ou no cadastro**, e a requisição não terá corpo, o token será informado no campo authorization dos headers da requisição.
+- Para buscar um post pelo conteúdo em seu campo "title" ou em seu campo "content", **será necessário utilizar o token obtido no login ou no cadastro**, e a requisição não terá corpo, o token será informado no header **"authorization"** da requisição.
 
 ### Response
 
@@ -436,7 +436,7 @@ ATENÇÃO: Esse token, ou o de Login, será necessário para as demais requisiç
 - Caso haja algum problema com o token informado, algumas mensagens de erro podem surgir:
   - Status 401 (**UNAUTHORIZED**):
     - **Expired or invalid token** (Caso o token seja inválido ou já tenha expirado);
-    - **Token not found** (Caso o campo authorization esteja vazio).
+    - **Token not found** (Caso o header "authorization" esteja vazio).
 
 ## Requisitos
 O projeto foi desenvolvido seguindo requisitos pré-estabelecidos:
